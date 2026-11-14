@@ -1,0 +1,40 @@
+{
+  "name": "indeciso",
+  "private": true,
+  "version": "1.0.0",
+  "description": "别纠结 Indeciso — 个性化随机决策工具",
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c magenta,cyan \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "tsx watch --env-file-if-exists=.env server/src/index.ts",
+    "dev:web": "vite",
+    "build": "vite build && npm run build:server",
+    "build:server": "esbuild server/src/index.ts --bundle --platform=node --target=node22 --format=cjs --packages=external --outfile=dist-server/index.cjs",
+    "start": "node --env-file-if-exists=.env dist-server/index.cjs",
+    "typecheck": "tsc --noEmit",
+    "test:csv": "tsx scripts/csv-test.ts",
+    "test:api": "node scripts/api-test.mjs"
+  },
+  "dependencies": {
+    "express": "^5.3.0",
+    "multer": "^2.5.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.5",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.3.0",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "concurrently": "^10.0.7",
+    "esbuild": "^0.28.2",
+    "tailwindcss": "^4.3.5",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.8"
+  }
+}

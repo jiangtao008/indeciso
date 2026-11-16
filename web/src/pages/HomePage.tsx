@@ -6,6 +6,7 @@ import { useToast } from '../context/ToastContext'
 import { api, ApiError } from '../lib/api'
 import { EMPTY_CTA, EMPTY_SUB, pickCopy } from '../lib/copy'
 import { buildEliminationPlan } from '../lib/elimination'
+import { MASCOT_URL } from '../lib/assets'
 import type { DrawPhase } from '../lib/types'
 import {
   animationDuration,
@@ -270,7 +271,7 @@ export function HomePage() {
     return (
       <div className="page-wrap">
         <div className="empty-state">
-          <img src="/mascot.jpeg" alt="" className="empty-mascot" />
+          <img src={MASCOT_URL} alt="" className="empty-mascot" />
           <h2 className="page-title">还没有选择池</h2>
           <p className="muted-copy mx-auto mt-3 max-w-[420px]" style={{ fontSize: 14 }}>
             先创建一个选择池，把纠结的事情放进去。
@@ -321,7 +322,7 @@ export function HomePage() {
           </div>
         ) : isEmpty ? (
           <div className="empty-state">
-            <img src="/mascot.jpeg" alt="" className="empty-mascot" />
+            <img src={MASCOT_URL} alt="" className="empty-mascot" />
             <h2 style={{ fontSize: 'clamp(1.4rem,3vw,2rem)', fontWeight: 600, margin: 0 }}>
               {emptyLine}
             </h2>

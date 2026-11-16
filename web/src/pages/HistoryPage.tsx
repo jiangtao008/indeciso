@@ -8,6 +8,7 @@ import { formatDateTime, firstChar, MODE_LABEL } from '../lib/utils'
 import { Icon } from '../components/icons'
 import { ConfirmDialog, Modal } from '../components/Modal'
 import { ShareCardModal } from '../components/ShareCardModal'
+import { assetUrl, MASCOT_URL } from '../lib/assets'
 
 const PAGE_SIZE = 20
 
@@ -167,7 +168,7 @@ export function HistoryPage() {
         </div>
       ) : records.length === 0 ? (
         <div className="section-card empty-state">
-          <img src="/mascot.jpeg" alt="" className="empty-mascot" />
+          <img src={MASCOT_URL} alt="" className="empty-mascot" />
           <h2 style={{ fontSize: '1.5rem', fontWeight: 600, margin: 0 }}>
             {total === 0 ? '这里还没有留下命运的脚印。' : '没有更多记录了。'}
           </h2>
@@ -223,7 +224,7 @@ export function HistoryPage() {
                   {record.results.map((result, index) => (
                     <span className="history-result-chip" key={`${record.id}-${result.itemId}-${index}`}>
                       {result.imageUrl ? (
-                        <img src={result.imageUrl} alt="" loading="lazy" />
+                        <img src={assetUrl(result.imageUrl)} alt="" loading="lazy" />
                       ) : (
                         <span className="ph">{firstChar(result.title)}</span>
                       )}
@@ -272,7 +273,7 @@ export function HistoryPage() {
                 <div className="result-card" key={`${result.itemId}-${index}`} style={{ animation: 'none' }}>
                   <div className="result-media">
                     {result.imageUrl ? (
-                      <img src={result.imageUrl} alt={result.title} />
+                      <img src={assetUrl(result.imageUrl)} alt={result.title} />
                     ) : (
                       <span>{firstChar(result.title)}</span>
                     )}

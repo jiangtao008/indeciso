@@ -6,6 +6,7 @@ import { HomePage } from './pages/HomePage'
 import { SettingsPage } from './pages/SettingsPage'
 import { HistoryPage } from './pages/HistoryPage'
 import { TemplatesPage } from './pages/TemplatesPage'
+import { MASCOT_URL } from './lib/assets'
 
 function Splash() {
   return (
@@ -20,7 +21,7 @@ function Splash() {
     >
       <div>
         <img
-          src="/mascot.jpeg"
+          src={MASCOT_URL}
           alt=""
           style={{
             width: 96,

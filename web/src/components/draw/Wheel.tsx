@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { ItemDTO, ResultSnapshot } from '@shared/types'
+import { MASCOT_URL } from '../../lib/assets'
 
 interface WheelProps {
   items: ItemDTO[]
@@ -185,7 +186,7 @@ export function Wheel({ items, target, spinKey, duration }: WheelProps) {
             }}
           >
             <img
-              src="/mascot.jpeg"
+              src={MASCOT_URL}
               alt=""
               style={{ width: 62, height: 62, borderRadius: 16, objectFit: 'cover' }}
             />

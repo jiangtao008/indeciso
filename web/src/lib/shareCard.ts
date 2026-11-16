@@ -1,5 +1,6 @@
 import type { ResultSnapshot } from '@shared/types'
 import { firstChar } from './utils'
+import { assetUrl, MASCOT_URL } from './assets'
 
 export const SHARE_WIDTH = 1080
 export const SHARE_HEIGHT = 1920
@@ -362,7 +363,7 @@ export async function renderShareCard(data: ShareCardData): Promise<HTMLCanvasEl
   strokeRounded(ctx, 40, 40, W - 80, H - 80, 52, 'rgba(255,255,255,0.12)', 2)
 
   // Brand row
-  const mascot = await loadImage('/mascot.jpeg')
+  const mascot = await loadImage(MASCOT_URL)
   fillRounded(ctx, 80, 92, 104, 104, 28, '#ffffff')
   if (mascot) {
     drawCover(ctx, mascot, 80, 92, 104, 104, 28)
@@ -417,7 +418,7 @@ export async function renderShareCard(data: ShareCardData): Promise<HTMLCanvasEl
   // Results
   const results = data.results.slice(0, 6)
   const rects = buildCardRects(results.length, Math.max(660, cursorY + 56), 1540)
-  const images = await Promise.all(results.map((result) => loadImage(result.imageUrl)))
+  const images = await Promise.all(results.map((result) => loadImage(assetUrl(result.imageUrl))))
 
   results.forEach((result, index) => {
     const rect = rects[index]

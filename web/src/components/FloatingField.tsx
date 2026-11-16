@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import type { ItemDTO } from '@shared/types'
 import type { DrawPhase } from '../lib/types'
 import { cn, mulberry32, prefersReducedMotion } from '../lib/utils'
+import { assetUrl } from '../lib/assets'
 
 type FloatItem = Pick<ItemDTO, 'id' | 'title' | 'imageUrl'>
 
@@ -333,7 +334,7 @@ export function FloatingField({ items, phase, pickedIds }: FloatingFieldProps) {
             >
               {layout.imageUrl ? (
                 <img
-                  src={layout.imageUrl}
+                  src={assetUrl(layout.imageUrl)}
                   alt=""
                   loading="lazy"
                   style={{

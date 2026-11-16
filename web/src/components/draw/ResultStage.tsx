@@ -3,6 +3,7 @@ import type { DrawDTO } from '@shared/types'
 import type { DrawPhase } from '../../lib/types'
 import { Icon } from '../icons'
 import { cn, firstChar, MODE_LABEL } from '../../lib/utils'
+import { assetUrl } from '../../lib/assets'
 
 export type SaveState = 'idle' | 'saving' | 'saved' | 'failed'
 
@@ -75,7 +76,7 @@ export function ResultStage({
                 </span>
                 {result.imageUrl && (
                   <img
-                    src={result.imageUrl}
+                    src={assetUrl(result.imageUrl)}
                     alt={result.title}
                     loading="eager"
                     onError={(event) => {

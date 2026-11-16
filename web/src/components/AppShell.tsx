@@ -3,6 +3,7 @@ import { Link, Outlet, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { Icon } from './icons'
 import { cn, firstChar } from '../lib/utils'
+import { MASCOT_URL } from '../lib/assets'
 
 type Menu = 'pools' | 'user' | null
 
@@ -40,7 +41,7 @@ export function AppShell() {
       <header className="nav-shell" ref={navRef}>
         <div className="mx-auto flex h-[68px] max-w-[1440px] items-center gap-2 px-3 sm:gap-3 sm:px-6">
           <Link to="/" className="flex shrink-0 items-center gap-3" aria-label="别纠结 Indeciso 首页">
-            <img src="/mascot.jpeg" alt="" className="brand-mark" />
+            <img src={MASCOT_URL} alt="" className="brand-mark" />
             <span className="hidden leading-none sm:block">
               <span className="block text-[15px] font-semibold tracking-[0.06em]">别纠结</span>
               <span

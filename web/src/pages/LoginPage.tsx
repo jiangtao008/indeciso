@@ -3,6 +3,7 @@ import { Navigate, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { Icon } from '../components/icons'
 import { ApiError } from '../lib/api'
+import { MASCOT_URL } from '../lib/assets'
 
 type Mode = 'login' | 'register'
 
@@ -63,7 +64,7 @@ export function LoginPage() {
         </div>
 
         <div className="relative z-10 flex flex-col items-center gap-8 text-center">
-          <img src="/mascot.jpeg" alt="别纠结吉祥物" className="auth-mascot" />
+          <img src={MASCOT_URL} alt="别纠结吉祥物" className="auth-mascot" />
           <div className="auth-hero-copy">
             <h1 className="hero-title" style={{ margin: 0 }}>
               别纠结，
@@ -101,7 +102,7 @@ export function LoginPage() {
         <div className="auth-card">
           <div className="mb-6">
             <div className="flex items-center gap-3">
-              <img src="/mascot.jpeg" alt="" className="mascot-mini" style={{ width: 40, height: 40 }} />
+              <img src={MASCOT_URL} alt="" className="mascot-mini" style={{ width: 40, height: 40 }} />
               <div>
                 <div className="text-[17px] font-semibold tracking-wide">
                   {mode === 'login' ? '欢迎回来' : '先占个位置'}

@@ -27,6 +27,12 @@ export class ApiError extends Error {
 }
 
 const UNAUTHORIZED_EVENT = 'indeciso:unauthorized'
+const BASE_URL = import.meta.env.BASE_URL
+
+/** Prefix API paths with the deployment base path, e.g. /indeciso/api/... */
+function withBase(path: string): string {
+  return path.startsWith('/') ? `${BASE_URL}${path.slice(1)}` : `${BASE_URL}${path}`
+}
 
 async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   const headers = new Headers(options.headers)
@@ -35,7 +41,7 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   }
   let res: Response
   try {
-    res = await fetch(path, {
+    res = await fetch(withBase(path), {
       ...options,
       headers,
       credentials: 'include',

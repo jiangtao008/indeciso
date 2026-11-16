@@ -7,8 +7,11 @@ import './index.css'
 const root = document.getElementById('root')
 if (!root) throw new Error('root element missing')
 
+// "/indeciso/" -> "/indeciso", "/" -> "/"
+const basename = import.meta.env.BASE_URL.replace(/\/+$/, '') || '/'
+
 createRoot(root).render(
-  <BrowserRouter>
+  <BrowserRouter basename={basename}>
     <ToastProvider>
       <App />
     </ToastProvider>

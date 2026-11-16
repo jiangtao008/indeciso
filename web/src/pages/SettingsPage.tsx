@@ -12,6 +12,7 @@ import {
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
 import { api } from '../lib/api'
+import { assetUrl, MASCOT_URL } from '../lib/assets'
 import { SAVE_FAIL_COPY } from '../lib/copy'
 import { cn, MODE_DESC, MODE_LABEL, SPEED_DESC, SPEED_LABEL } from '../lib/utils'
 import { uploadImage, validateImageFile } from '../lib/upload'
@@ -442,7 +443,7 @@ export function SettingsPage() {
     return (
       <div className="page-wrap">
         <div className="empty-state">
-          <img src="/mascot.jpeg" alt="" className="empty-mascot" />
+          <img src={MASCOT_URL} alt="" className="empty-mascot" />
           <h1 className="page-title">还没有可编辑的选择池</h1>
           <p className="muted-copy mx-auto mt-3 max-w-[420px]" style={{ fontSize: 14 }}>
             {loadError || '先创建一个选择池，命运才有地方安放你的纠结。'}
@@ -747,7 +748,7 @@ export function SettingsPage() {
                             {uploadingIndex === index ? (
                               <Icon name="refresh" size={16} className="spin" />
                             ) : item.imageUrl ? (
-                              <img src={item.imageUrl} alt="" />
+                              <img src={assetUrl(item.imageUrl)} alt="" />
                             ) : (
                               <Icon name="image" size={17} />
                             )}

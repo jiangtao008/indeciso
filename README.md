@@ -60,8 +60,22 @@ npm start         # http://localhost:8787
 | 变量 | 默认 | 说明 |
 |---|---|---|
 | `PORT` | `8787` | API / 生产网页端口 |
+| `APP_BASE` | `/` | 部署路径前缀。部署在子路径（如 `/indeciso/`）时填写，必须与 nginx 的 `location` 前缀一致，**构建时读取**，改完需重新 `npm run build` |
 | `COOKIE_SECURE` | `false` | 部署在 HTTPS 后设为 `true` |
 | `SEED_DEMO` | `true` | 是否自动创建 demo 体验账号，正式部署建议 `false` |
+
+部署在子路径时，nginx 需要把前缀剥掉再转发（注意 `proxy_pass` 末尾的 `/`）：
+
+```nginx
+location /indeciso/ {
+    proxy_pass http://127.0.0.1:8787/;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    client_max_body_size 12m;   # 支持图片上传
+}
+```
 
 数据保存在本地 `data/`：
 
